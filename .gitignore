@@ -1,0 +1,39 @@
+# Personal / AI assistant
+CLAUDE.md
+MEMORY.md
+.claude/
+
+# Python environment
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Dataset (fichero grande, no se versiona)
+data/*.csv
+
+# Binarios del modelo (generados, no se versionan)
+model/artifacts/*.cbm
+model/artifacts/*.pkl
+
+# Logs de entrenamiento CatBoost
+model/notebooks/catboost_info/
+*.tfevents
+
+# Prototype standalone
+PrecioJusto-standalone.html
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Variables de entorno
+.env
+.env.*
+
+# Mantener directorios vacíos trackeados
+!.gitkeep
