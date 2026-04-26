@@ -1,0 +1,152 @@
+{
+  "features": [
+    "sq_mt_built",
+    "sq_mt_useful",
+    "n_rooms",
+    "n_bathrooms",
+    "floor",
+    "subtitle",
+    "has_lift",
+    "has_ac",
+    "has_parking",
+    "built_year",
+    "is_new_development",
+    "house_type_id",
+    "is_renewal_needed",
+    "is_exterior",
+    "has_terrace",
+    "has_balcony",
+    "sq_mt_built_missing",
+    "sq_mt_useful_missing",
+    "n_bathrooms_missing",
+    "floor_missing",
+    "has_lift_missing",
+    "has_ac_missing",
+    "built_year_missing",
+    "is_new_development_missing",
+    "house_type_id_missing"
+  ],
+  "base_features": [
+    "sq_mt_built",
+    "sq_mt_useful",
+    "n_rooms",
+    "n_bathrooms",
+    "floor",
+    "subtitle",
+    "has_lift",
+    "has_ac",
+    "has_parking",
+    "built_year",
+    "is_new_development",
+    "house_type_id",
+    "is_renewal_needed",
+    "is_exterior",
+    "has_terrace",
+    "has_balcony"
+  ],
+  "cat_features": [
+    "subtitle",
+    "house_type_id",
+    "floor"
+  ],
+  "bool_features": [
+    "has_lift",
+    "has_ac",
+    "has_parking",
+    "is_new_development",
+    "is_renewal_needed",
+    "is_exterior",
+    "has_terrace",
+    "has_balcony"
+  ],
+  "missing_flag_features": [
+    "sq_mt_built_missing",
+    "sq_mt_useful_missing",
+    "n_bathrooms_missing",
+    "floor_missing",
+    "has_lift_missing",
+    "has_ac_missing",
+    "built_year_missing",
+    "is_new_development_missing",
+    "house_type_id_missing"
+  ],
+  "target": "buy_price",
+  "target_transform": "log1p",
+  "model": "CatBoost",
+  "best_params": {
+    "random_strength": 0.5,
+    "learning_rate": 0.075,
+    "l2_leaf_reg": 3,
+    "depth": 8,
+    "bagging_temperature": 0
+  },
+  "metrics": {
+    "n": 4309,
+    "RMSE": 221859.01,
+    "MAE": 104274.38,
+    "MedAE": 38053.71,
+    "R2": 0.8967,
+    "MAPE": 0.1502,
+    "MdAPE": 0.1109,
+    "<=10%": 0.4579,
+    "<=20%": 0.7461,
+    "<=30%": 0.8828,
+    "AE_p90": 247733.19,
+    "AE_p95": 447553.97,
+    "Bias": -12752.54
+  },
+  "prediction_interval": {
+    "method": "validation_log_residual_quantiles",
+    "residual_log_quantiles": {
+      "p05": -0.319129,
+      "p10": -0.228652,
+      "p90": 0.226525,
+      "p95": 0.30003
+    }
+  },
+  "production_gate": {
+    "approved_for_exact_price_production": false,
+    "approved_for_guidance_range_beta": true,
+    "checks": {
+      "r2_at_least_0_90": false,
+      "median_ape_at_most_0_12": true,
+      "within_20_pct_at_least_0_70": true,
+      "p95_abs_error_at_most_400k": false
+    }
+  },
+  "data": {
+    "raw_rows": 21742,
+    "sale_rows_with_price": 21742,
+    "training_rows": 21542,
+    "removed_outlier_rows": 200,
+    "min_price": 80000.0,
+    "max_price": 4500000.0,
+    "features": [
+      "sq_mt_built",
+      "sq_mt_useful",
+      "n_rooms",
+      "n_bathrooms",
+      "floor",
+      "subtitle",
+      "has_lift",
+      "has_ac",
+      "has_parking",
+      "built_year",
+      "is_new_development",
+      "house_type_id",
+      "is_renewal_needed",
+      "is_exterior",
+      "has_terrace",
+      "has_balcony",
+      "sq_mt_built_missing",
+      "sq_mt_useful_missing",
+      "n_bathrooms_missing",
+      "floor_missing",
+      "has_lift_missing",
+      "has_ac_missing",
+      "built_year_missing",
+      "is_new_development_missing",
+      "house_type_id_missing"
+    ]
+  }
+}

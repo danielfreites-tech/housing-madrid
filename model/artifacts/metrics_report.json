@@ -1,0 +1,448 @@
+{
+  "data": {
+    "raw_rows": 21742,
+    "sale_rows_with_price": 21742,
+    "training_rows": 21542,
+    "removed_outlier_rows": 200,
+    "min_price": 80000.0,
+    "max_price": 4500000.0,
+    "features": [
+      "sq_mt_built",
+      "sq_mt_useful",
+      "n_rooms",
+      "n_bathrooms",
+      "floor",
+      "subtitle",
+      "has_lift",
+      "has_ac",
+      "has_parking",
+      "built_year",
+      "is_new_development",
+      "house_type_id",
+      "is_renewal_needed",
+      "is_exterior",
+      "has_terrace",
+      "has_balcony",
+      "sq_mt_built_missing",
+      "sq_mt_useful_missing",
+      "n_bathrooms_missing",
+      "floor_missing",
+      "has_lift_missing",
+      "has_ac_missing",
+      "built_year_missing",
+      "is_new_development_missing",
+      "house_type_id_missing"
+    ]
+  },
+  "splits": {
+    "train": 15509,
+    "validation": 1724,
+    "test": 4309
+  },
+  "metrics": {
+    "train": {
+      "n": 15509,
+      "RMSE": 127262.76,
+      "MAE": 63566.95,
+      "MedAE": 26454.44,
+      "R2": 0.9662,
+      "MAPE": 0.0989,
+      "MdAPE": 0.0762,
+      "<=10%": 0.6153,
+      "<=20%": 0.8836,
+      "<=30%": 0.9681,
+      "AE_p90": 154692.01,
+      "AE_p95": 249303.24,
+      "Bias": -6520.2
+    },
+    "validation": {
+      "n": 1724,
+      "RMSE": 228489.76,
+      "MAE": 105371.2,
+      "MedAE": 37946.92,
+      "R2": 0.8864,
+      "MAPE": 0.1493,
+      "MdAPE": 0.1096,
+      "<=10%": 0.4582,
+      "<=20%": 0.7477,
+      "<=30%": 0.8823,
+      "AE_p90": 261970.31,
+      "AE_p95": 462180.26,
+      "Bias": -10757.28
+    },
+    "test": {
+      "n": 4309,
+      "RMSE": 221859.01,
+      "MAE": 104274.38,
+      "MedAE": 38053.71,
+      "R2": 0.8967,
+      "MAPE": 0.1502,
+      "MdAPE": 0.1109,
+      "<=10%": 0.4579,
+      "<=20%": 0.7461,
+      "<=30%": 0.8828,
+      "AE_p90": 247733.19,
+      "AE_p95": 447553.97,
+      "Bias": -12752.54
+    }
+  },
+  "segments": {
+    "by_price_band": [
+      {
+        "price_band": "<=200k",
+        "n": 1133,
+        "median_price": 149500.0,
+        "mae": 22184.5601,
+        "mdape": 0.105,
+        "mape": 0.1518,
+        "within_20": 0.7696,
+        "p90_abs_error": 46807.1756,
+        "bias": 10492.4983
+      },
+      {
+        "price_band": "200k-400k",
+        "n": 1146,
+        "median_price": 285000.0,
+        "mae": 41807.5842,
+        "mdape": 0.1058,
+        "mape": 0.1416,
+        "within_20": 0.7818,
+        "p90_abs_error": 87672.9964,
+        "bias": 1876.0695
+      },
+      {
+        "price_band": "400k-700k",
+        "n": 871,
+        "median_price": 540000.0,
+        "mae": 70912.452,
+        "mdape": 0.0995,
+        "mape": 0.1312,
+        "within_20": 0.7933,
+        "p90_abs_error": 148601.96,
+        "bias": 4999.1656
+      },
+      {
+        "price_band": "700k-1M",
+        "n": 455,
+        "median_price": 850000.0,
+        "mae": 133275.9629,
+        "mdape": 0.1233,
+        "mape": 0.1549,
+        "within_20": 0.7143,
+        "p90_abs_error": 273518.6778,
+        "bias": 20674.4866
+      },
+      {
+        "price_band": "1M-2M",
+        "n": 468,
+        "median_price": 1450000.0,
+        "mae": 254544.8969,
+        "mdape": 0.1412,
+        "mape": 0.1753,
+        "within_20": 0.6303,
+        "p90_abs_error": 548497.5797,
+        "bias": -16595.4935
+      },
+      {
+        "price_band": ">2M",
+        "n": 236,
+        "median_price": 2615000.0,
+        "mae": 570929.5662,
+        "mdape": 0.1672,
+        "mape": 0.1948,
+        "within_20": 0.5763,
+        "p90_abs_error": 1287258.0393,
+        "bias": -317725.113
+      }
+    ],
+    "worst_neighborhoods_by_mae_min_20": [
+      {
+        "subtitle": "Moncloa",
+        "n": 159,
+        "median_price": 1450000.0,
+        "mae": 331269.6337,
+        "mdape": 0.1484,
+        "within_20": 0.6289,
+        "p90_abs_error": 741490.2663,
+        "bias": -25517.4891
+      },
+      {
+        "subtitle": "Ciudad Universitaria",
+        "n": 20,
+        "median_price": 1300000.0,
+        "mae": 328892.2739,
+        "mdape": 0.1895,
+        "within_20": 0.6,
+        "p90_abs_error": 781200.5656,
+        "bias": 22155.6497
+      },
+      {
+        "subtitle": "Conde Orgaz-Piovera",
+        "n": 34,
+        "median_price": 1667500.0,
+        "mae": 309938.0939,
+        "mdape": 0.1372,
+        "within_20": 0.6471,
+        "p90_abs_error": 732996.7007,
+        "bias": -85281.6374
+      },
+      {
+        "subtitle": "Chamartín",
+        "n": 152,
+        "median_price": 1177500.0,
+        "mae": 307001.0885,
+        "mdape": 0.1764,
+        "within_20": 0.5592,
+        "p90_abs_error": 795804.2407,
+        "bias": -27618.1203
+      },
+      {
+        "subtitle": "Recoletos",
+        "n": 25,
+        "median_price": 1950000.0,
+        "mae": 289381.077,
+        "mdape": 0.095,
+        "within_20": 0.68,
+        "p90_abs_error": 631979.887,
+        "bias": 137703.0838
+      },
+      {
+        "subtitle": "El Viso",
+        "n": 28,
+        "median_price": 1111500.0,
+        "mae": 271140.8111,
+        "mdape": 0.0821,
+        "within_20": 0.7143,
+        "p90_abs_error": 687524.7529,
+        "bias": -131082.6838
+      },
+      {
+        "subtitle": "Hortaleza",
+        "n": 97,
+        "median_price": 1450000.0,
+        "mae": 266143.2235,
+        "mdape": 0.1268,
+        "within_20": 0.6598,
+        "p90_abs_error": 724569.3703,
+        "bias": -39852.4939
+      },
+      {
+        "subtitle": "Retiro",
+        "n": 56,
+        "median_price": 626500.0,
+        "mae": 258687.6183,
+        "mdape": 0.1688,
+        "within_20": 0.6071,
+        "p90_abs_error": 623329.8329,
+        "bias": -118881.5875
+      },
+      {
+        "subtitle": "Barrio de Salamanca",
+        "n": 84,
+        "median_price": 992500.0,
+        "mae": 235038.7575,
+        "mdape": 0.1549,
+        "within_20": 0.5833,
+        "p90_abs_error": 610227.0362,
+        "bias": -60921.6991
+      },
+      {
+        "subtitle": "Nueva España",
+        "n": 31,
+        "median_price": 825000.0,
+        "mae": 203607.4773,
+        "mdape": 0.1213,
+        "within_20": 0.6452,
+        "p90_abs_error": 475275.9506,
+        "bias": -44936.3577
+      },
+      {
+        "subtitle": "Chamberí",
+        "n": 130,
+        "median_price": 875000.0,
+        "mae": 190680.3932,
+        "mdape": 0.1296,
+        "within_20": 0.7077,
+        "p90_abs_error": 440436.7028,
+        "bias": -49064.1555
+      },
+      {
+        "subtitle": "Aravaca",
+        "n": 38,
+        "median_price": 808000.0,
+        "mae": 183989.4583,
+        "mdape": 0.1094,
+        "within_20": 0.6579,
+        "p90_abs_error": 432833.2156,
+        "bias": 19044.0973
+      },
+      {
+        "subtitle": "Centro",
+        "n": 112,
+        "median_price": 632500.0,
+        "mae": 153004.3663,
+        "mdape": 0.1197,
+        "within_20": 0.6786,
+        "p90_abs_error": 328461.9197,
+        "bias": 11792.7738
+      },
+      {
+        "subtitle": "Almagro",
+        "n": 45,
+        "median_price": 1100000.0,
+        "mae": 150726.512,
+        "mdape": 0.1184,
+        "within_20": 0.7778,
+        "p90_abs_error": 309732.4915,
+        "bias": -56074.5536
+      },
+      {
+        "subtitle": "Fuencarral",
+        "n": 77,
+        "median_price": 849000.0,
+        "mae": 141890.1644,
+        "mdape": 0.1169,
+        "within_20": 0.6753,
+        "p90_abs_error": 295336.4038,
+        "bias": 8584.1058
+      },
+      {
+        "subtitle": "Lista",
+        "n": 22,
+        "median_price": 625000.0,
+        "mae": 138635.123,
+        "mdape": 0.099,
+        "within_20": 0.7273,
+        "p90_abs_error": 397379.5719,
+        "bias": 25638.3967
+      },
+      {
+        "subtitle": "Argüelles",
+        "n": 52,
+        "median_price": 609000.0,
+        "mae": 130669.7198,
+        "mdape": 0.1318,
+        "within_20": 0.6538,
+        "p90_abs_error": 293422.7522,
+        "bias": 28415.6401
+      },
+      {
+        "subtitle": "Ibiza",
+        "n": 26,
+        "median_price": 650950.0,
+        "mae": 128127.2682,
+        "mdape": 0.1219,
+        "within_20": 0.8846,
+        "p90_abs_error": 171890.0144,
+        "bias": -85148.9718
+      },
+      {
+        "subtitle": "Chueca-Justicia",
+        "n": 50,
+        "median_price": 515000.0,
+        "mae": 125854.4352,
+        "mdape": 0.1249,
+        "within_20": 0.66,
+        "p90_abs_error": 223433.9219,
+        "bias": -69881.3927
+      },
+      {
+        "subtitle": "Goya",
+        "n": 38,
+        "median_price": 777880.0,
+        "mae": 120540.7965,
+        "mdape": 0.1149,
+        "within_20": 0.7895,
+        "p90_abs_error": 249726.8201,
+        "bias": -15904.8709
+      },
+      {
+        "subtitle": "Bernabéu-Hispanoamérica",
+        "n": 36,
+        "median_price": 715000.0,
+        "mae": 110979.5877,
+        "mdape": 0.1143,
+        "within_20": 0.75,
+        "p90_abs_error": 317074.3989,
+        "bias": -56031.5592
+      },
+      {
+        "subtitle": "Castilla",
+        "n": 22,
+        "median_price": 482500.0,
+        "mae": 109799.4492,
+        "mdape": 0.1378,
+        "within_20": 0.6818,
+        "p90_abs_error": 308165.5418,
+        "bias": 75231.9485
+      },
+      {
+        "subtitle": "Canillas",
+        "n": 27,
+        "median_price": 286242.0,
+        "mae": 103224.6716,
+        "mdape": 0.0955,
+        "within_20": 0.7037,
+        "p90_abs_error": 190064.7316,
+        "bias": -87428.7368
+      },
+      {
+        "subtitle": "Cuzco-Castillejos",
+        "n": 32,
+        "median_price": 504500.0,
+        "mae": 100436.5524,
+        "mdape": 0.1297,
+        "within_20": 0.7812,
+        "p90_abs_error": 228010.5146,
+        "bias": -51891.8911
+      },
+      {
+        "subtitle": "Palacio",
+        "n": 39,
+        "median_price": 415000.0,
+        "mae": 99808.1338,
+        "mdape": 0.1503,
+        "within_20": 0.6923,
+        "p90_abs_error": 202085.4705,
+        "bias": -53321.7422
+      }
+    ]
+  },
+  "feature_importance": {
+    "sq_mt_built": 30.386,
+    "subtitle": 29.6817,
+    "n_bathrooms": 11.3923,
+    "has_lift": 4.5386,
+    "floor": 4.0766,
+    "house_type_id": 4.0306,
+    "built_year": 3.5297,
+    "n_rooms": 2.6262,
+    "has_parking": 1.8629,
+    "sq_mt_useful": 1.688,
+    "is_new_development": 1.3944,
+    "has_terrace": 1.135,
+    "is_renewal_needed": 0.951,
+    "has_ac": 0.6479,
+    "is_exterior": 0.5814,
+    "has_balcony": 0.5642,
+    "has_ac_missing": 0.4625,
+    "has_lift_missing": 0.2688,
+    "is_new_development_missing": 0.0515,
+    "built_year_missing": 0.0475,
+    "sq_mt_useful_missing": 0.034,
+    "n_bathrooms_missing": 0.031,
+    "floor_missing": 0.018,
+    "house_type_id_missing": 0.0001,
+    "sq_mt_built_missing": 0.0
+  },
+  "production_gate": {
+    "approved_for_exact_price_production": false,
+    "approved_for_guidance_range_beta": true,
+    "checks": {
+      "r2_at_least_0_90": false,
+      "median_ape_at_most_0_12": true,
+      "within_20_pct_at_least_0_70": true,
+      "p95_abs_error_at_most_400k": false
+    }
+  }
+}
