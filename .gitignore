@@ -17,9 +17,8 @@ __pycache__/
 # Dataset (fichero grande, no se versiona)
 data/*.csv
 
-# Binarios del modelo (generados, no se versionan)
+# Binarios del modelo
 model/artifacts/*.cbm
-model/artifacts/*.pkl
 
 # Logs de entrenamiento CatBoost
 model/notebooks/catboost_info/
