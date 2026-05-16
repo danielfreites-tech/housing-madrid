@@ -1,85 +1,60 @@
-# housing-madrid
+# PrecioJusto · Estimador de precio de vivienda en Madrid
 
-Aplicación web full-stack que predice el precio de compra de una vivienda en Madrid.  
-El usuario introduce los datos de su vivienda, el backend los pasa al modelo de ML entrenado y devuelve el precio estimado con un intervalo de confianza.
-
----
-
-## Stack tecnológico
-
-| Capa      | Tecnología                              |
-|-----------|-----------------------------------------|
-| Frontend  | React                                   |
-| Backend   | FastAPI (Python 3.13)                   |
-| Modelo IA | CatBoost (principal)                    |
-| Dataset   | houses_Madrid.csv — 21 742 viviendas    |
+Aplicación web que estima el precio de compra de una vivienda en Madrid mediante un modelo de Machine Learning entrenado con más de 21.000 viviendas reales. El usuario introduce los datos del inmueble en un formulario guiado y obtiene un precio estimado con intervalo de confianza.
 
 ---
 
-## Estado del proyecto
+## Cómo ejecutar
 
-| Fase         | Estado       |
-|--------------|--------------|
-| Modelo / EDA | ✅ Completado |
-| Backend API  | 🔜 Pendiente  |
-| Frontend     | 🔜 Pendiente  |
-
----
-
-## Modelo
-
-### Dataset
-- **Fuente:** `houses_Madrid.csv` — 21 742 registros de venta en Madrid
-- **Preprocesamiento:** eliminación de 200 outliers extremos, flags de valores nulos como features
-- **Split:** 72% train · 8% validación · 20% test
-
-### Comparativa de modelos (test set, n = 4 309)
-
-| Modelo        | R²     | MAE (€)   | MedAE (€) | ≤20% error |
-|---------------|--------|-----------|-----------|------------|
-| **CatBoost**  | 0.897  | 104 274   | 38 054    | 74.6 %     |
-| LightGBM      | 0.897  | 106 644   | 40 026    | 73.3 %     |
-| XGBoost       | 0.887  | 116 779   | 47 745    | 65.9 %     |
-| Random Forest | 0.877  | 123 109   | 53 073    | 63.7 %     |
-| Dummy median  | −0.14  | 418 989   | 214 000   | 14.9 %     |
-
-> Criterio de selección: mayor cobertura ≤20% de error, desempate por menor MAE en euros.
-
-### Features del modelo final (25)
-
-**Base (16):** `sq_mt_built`, `sq_mt_useful`, `n_rooms`, `n_bathrooms`, `floor`, `subtitle` (barrio), `has_lift`, `has_ac`, `has_parking`, `built_year`, `is_new_development`, `house_type_id`, `is_renewal_needed`, `is_exterior`, `has_terrace`, `has_balcony`
-
-**Missing indicators (9):** flags binarios para campos con nulos frecuentes (`sq_mt_built_missing`, `sq_mt_useful_missing`, `n_bathrooms_missing`, `floor_missing`, `has_lift_missing`, `has_ac_missing`, `built_year_missing`, `is_new_development_missing`, `house_type_id_missing`)
-
-
-### Artefactos exportados (`model/artifacts/`)
-
-| Archivo                    | Descripción                                          |
-|----------------------------|------------------------------------------------------|
-| `model.cbm`                | Modelo CatBoost serializado (no versionado en git)   |
-| `feature_columns.json`     | Lista de features y categóricas que espera el modelo |
-| `metrics_report.json`      | Métricas completas train/val/test + segmentos        |
-| `model_selection_summary.json` | Comparativa de todos los modelos evaluados       |
-| `neighborhoods.json`       | Mapeo de IDs de barrio a nombre legible              |
-
----
-
-## Estructura del repositorio
-
-```
-├── data/                    # Dataset (CSV no versionado)
-├── model/
-│   ├── notebooks/           # 01_eda_model_selection.ipynb · 02_training_final.ipynb
-│   ├── artifacts/           # JSON de métricas y features (model.cbm excluido)
-│   └── training_utils.py    # PricePredictionModel wrapper
-├── backend/                 # FastAPI — pendiente
-│   └── app/
-└── frontend/                # React — pendiente
-    └── src/
+```bash
+pip install -r requirements.txt
+streamlit run app.py
 ```
 
 ---
 
+## Stack
 
+| Capa        | Tecnología                           |
+|-------------|--------------------------------------|
+| Aplicación  | Streamlit (Python 3.13)              |
+| Modelo IA   | CatBoost                             |
+| Visualización | Plotly                             |
+| Dataset     | houses_Madrid.csv — 21.742 viviendas |
 
-> El dataset `data/houses_Madrid.csv` y el binario `model/artifacts/model.cbm` están excluidos del repositorio por tamaño.
+---
+
+## Rendimiento del modelo (test set, n = 4.309)
+
+| Métrica       | Valor      |
+|---------------|------------|
+| R²            | 0,897      |
+| MAE           | 104.274 €  |
+| Error mediano | 38.054 €   |
+| Casos ±20%    | 74,6 %     |
+
+> CatBoost seleccionado por su manejo nativo de categóricas y nulos, y mayor cobertura ±20% frente a LightGBM, XGBoost y Random Forest.
+
+---
+
+## Estructura del proyecto
+
+```
+├── app.py                   # Aplicación Streamlit
+├── requirements.txt
+├── data/                    # Dataset (no versionado por tamaño)
+└── model/
+    ├── notebooks/           # 01_eda_model_selection · 02_training_final
+    ├── artifacts/           # model.pkl, metrics_report.json, neighborhoods.json, ...
+    └── training_utils.py    # Wrapper PricePredictionModel
+```
+
+---
+
+## Dataset
+
+`data/houses_Madrid.csv` — 21.742 registros de viviendas en venta en Madrid. No incluido en el repositorio por tamaño. El modelo usa 25 features: 16 variables base + 9 indicadores de valores nulos.
+
+---
+
+> Esta herramienta es orientativa y no equivale a una tasación oficial (RD 775/1997).
